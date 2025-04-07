@@ -21,7 +21,7 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 ## 🧠 Architecture
 
 <p align="center">
-  <img src="image.png" alt="CycleDiffusion Architecture" width="700"/>
+  <img width="552" alt="Image" src="https://github.com/user-attachments/assets/d71929d9-e3d4-4e11-b205-f49208fa680b" />
 </p>
 
 ---
