@@ -45,6 +45,13 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 
 ## ⚙️ Training & Evaluation Setup
 - **Dataset**: VCTK (p236, p239, p259, p263) — 471 training utterances and 10 test utterances per speaker.
+-> Test Sentence Numbers: 2, 3, 4, 5, 6, 7, 9, 10, 11, 12
+-> Speaker Information
+- p239: 502 files (female) → VCTK_F1: 471 files
+- p236: 492 files (female) → VCTK_F2: 471 files
+- p259: 481 files (male) → VCTK_M1: 471 files
+- p263: 471 files (male) → VCTK_M2: 471 files
+  
 - **Epochs**: Up to 300, with evaluation every 10 epochs.
 - **Diffusion Steps**:
   - Default: 5
