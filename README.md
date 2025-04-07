@@ -54,7 +54,7 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
   
 - **Epochs**: Training was conducted for up to 300 epochs. Evaluation was performed every 10 epochs, and the model checkpoint with the best MCD score was selected.
 - **Diffusion Steps**:
-  - Default: 5 (Used during cycle inference for most experiments)
+  - Default: 5 (The number of diffusion steps used during cycle inference.)
   - Final Experiment: 6
 - **Cycle Batch Sample Count (iii)**:
   - Default: 2 (During cycle consistency loss calculation, only 2 samples out of each batch of 4 were used due to VRAM limitations.)
