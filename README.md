@@ -52,13 +52,13 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
   - p259: 481 files (male) → VCTK_M1: 471 files
   - p263: 471 files (male) → VCTK_M2: 471 files
   
-- **Epochs**: Up to 300, with evaluation every 10 epochs.
+- **Epochs**: Training was conducted for up to 300 epochs. Evaluation was performed every 10 epochs, and the model checkpoint with the best MCD score was selected.
 - **Diffusion Steps**:
-  - Default: 5
+  - Default: 5 (Used during cycle inference for most experiments)
   - Final Experiment: 6
 - **Cycle Batch Sample Count (iii)**:
-  - Default: 2 (due to VRAM constraints)
-  - Final Experiment: 3 (24GB VRAM setting)
+  - Default: 2 (During cycle consistency loss calculation, only 2 samples out of each batch of 4 were used due to VRAM limitations.)
+  - Final Experiment: **iii = 3** and **diffusion step = 6** were applied using a high-memory setup with **24GB VRAM**.
 - **Best Model Script**:  
   `real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50.py`
 
