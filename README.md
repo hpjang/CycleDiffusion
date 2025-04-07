@@ -55,6 +55,16 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
  python3 real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50_*.py
 ```
 
+## 💾 Pretrained Weights
+
+You can download the pretrained weights used in our experiments from the following link:
+
+- [Google Drive – Pretrained Weights](https://drive.google.com/drive/folders/1qo0Xtv7sYLfy6GrxLX3a_xfTQhiXr2Ko?usp=sharing)
+- [Google Drive – checkpts](https://drive.google.com/drive/folders/1uMD526Dua2NpyRZLvoLtawgYDZDxII-3?usp=sharing)
+
+Please place the downloaded checkpoint files under the appropriate `checkpts/` directory to run inference or resume training.
+
+
 ## ⚙️ Training & Evaluation Setup
 - **Dataset**: VCTK (p236, p239, p259, p263) — 471 training utterances and 10 test utterances per speaker.
   - Test Sentence Numbers: 2, 3, 4, 5, 6, 7, 9, 10, 11, 12
