@@ -26,6 +26,52 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 
 ---
 
+## 📁 Directory Structure
+The following is an overview of the project directory and major files:
+
+VCTK_2F2M/: Dataset folder containing 2 male and 2 female speakers.
+
+converted_all/: All generated voice conversion outputs.
+
+CycleDiffusion_Inter_gender/, CycleDiffusion_Intra_gender/: Final results used in the paper (converted samples).
+
+DiffVC_Inter_gender/, DiffVC_Intra_gender/: Baseline DiffVC outputs for comparison.
+
+model/: Main model architecture code.
+
+logs_enc_2speakers/: Encoder trained with 2 speakers.
+
+make_converted_wav.py: Inference script to generate converted waveforms.
+
+real_last_cycle_train_dec_4speakers_*.py: Training scripts with various cycle consistency configurations.
+
+tree_files.py: Generates a markdown structure of the codebase.
+
+calculate/: Scripts and result files for MCD evaluation.
+
+cal_pymcd.py: MCD measurement script.
+
+make_json.py: Creates default result JSON structure.
+
+get_mels_embeds_HEE.py: Generates mel-spectrogram and speaker embeddings.
+
+get_textgrids.py: Generates textgrid files for alignment.
+
+---
+
+##⚙️ Training & Evaluation Setup
+Dataset: Subset of the VCTK corpus with 4 speakers (2F, 2M), each providing 471 training and 10 test utterances.
+
+Training Epochs: Up to 300, with evaluation every 10 epochs.
+
+Diffusion Steps: 5 (for cycle inference), 6 in final experiments.
+
+Cycle Consistency Setting: iii = 2 for most experiments (batch subset used due to VRAM limits), iii = 3 in final version.
+
+Best Model: real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50.py
+
+---
+
 ## 🚩 Highlights
 
 - 🌀 **Cycle-Consistent Diffusion Architecture**  
