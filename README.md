@@ -26,51 +26,34 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 
 ---
 
-## 📁 Directory Structure
-The following is an overview of the project directory and major files:
+## 📁 Directory Structure and Usage
+- `VCTK_2F2M/`: Subset of the VCTK dataset with 2 female and 2 male speakers.
+  - Contains subfolders like `wavs/`, `mels/`, `embeds/`, `textgrids/`, and `txt/`.
+- `converted_all/`: All voice conversion output files.
+  - `CycleDiffusion_Inter_gender/`, `CycleDiffusion_Intra_gender/`: Final outputs for CycleDiffusion.
+  - `DiffVC_Inter_gender/`, `DiffVC_Intra_gender/`: Baseline outputs from DiffVC.
+- `model/`: Main architecture files including diffusion and cycle-consistent modules.
+- `make_converted_wav.py`: Inference script to generate converted waveforms from trained checkpoints.
+- `real_last_cycle_train_dec_4speakers_*.py`: Training scripts for CycleDiffusion with different cycle consistency configurations.
+- `logs_enc_2speakers/`: Speaker encoder trained on 2 speakers.
+- `get_mels_embeds_HEE.py`: Script to extract mel-spectrograms and speaker embeddings.
+- `get_textgrids.py`: Generates forced-alignment textgrid files.
+- `calculate/`: Contains MCD evaluation scripts and output.
+  - `cal_pymcd.py`: Computes MCD using DTW.
+  - `make_json.py`: Generates a default JSON template for storing evaluation results.
+- `tree_files.py`: Utility for generating markdown descriptions of directory structures.
 
-VCTK_2F2M/: Dataset folder containing 2 male and 2 female speakers.
-
-converted_all/: All generated voice conversion outputs.
-
-CycleDiffusion_Inter_gender/, CycleDiffusion_Intra_gender/: Final results used in the paper (converted samples).
-
-DiffVC_Inter_gender/, DiffVC_Intra_gender/: Baseline DiffVC outputs for comparison.
-
-model/: Main model architecture code.
-
-logs_enc_2speakers/: Encoder trained with 2 speakers.
-
-make_converted_wav.py: Inference script to generate converted waveforms.
-
-real_last_cycle_train_dec_4speakers_*.py: Training scripts with various cycle consistency configurations.
-
-tree_files.py: Generates a markdown structure of the codebase.
-
-calculate/: Scripts and result files for MCD evaluation.
-
-cal_pymcd.py: MCD measurement script.
-
-make_json.py: Creates default result JSON structure.
-
-get_mels_embeds_HEE.py: Generates mel-spectrogram and speaker embeddings.
-
-get_textgrids.py: Generates textgrid files for alignment.
-
----
-
-##⚙️ Training & Evaluation Setup
-Dataset: Subset of the VCTK corpus with 4 speakers (2F, 2M), each providing 471 training and 10 test utterances.
-
-Training Epochs: Up to 300, with evaluation every 10 epochs.
-
-Diffusion Steps: 5 (for cycle inference), 6 in final experiments.
-
-Cycle Consistency Setting: iii = 2 for most experiments (batch subset used due to VRAM limits), iii = 3 in final version.
-
-Best Model: real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50.py
-
----
+## ⚙️ Training & Evaluation Setup
+- **Dataset**: VCTK (p236, p239, p259, p263) — 471 training utterances and 10 test utterances per speaker.
+- **Epochs**: Up to 300, with evaluation every 10 epochs.
+- **Diffusion Steps**:
+  - Default: 5
+  - Final Experiment: 6
+- **Cycle Batch Sample Count (iii)**:
+  - Default: 2 (due to VRAM constraints)
+  - Final Experiment: 3 (24GB VRAM setting)
+- **Best Model Script**:  
+  `real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50.py`
 
 ## 🚩 Highlights
 
@@ -96,6 +79,19 @@ Best Model: real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50.py
 | **ASR Accuracy (↑)** | 71.3% | **74.4%** | +4.4% |
 | **Mel-Cepstral Distance (↓)** | 5.90 | **5.09** | -15.9% |
 | **MOS Score** | 3.50 | **3.70** | +5.7% |
+
+---
+
+### 🧪 Ablation Study Summary
+
+| Condition                                           | MCD Score |
+|----------------------------------------------------|-----------|
+| Cycle from epoch 0 (a→b→a, full backward)           | 5.59      |
+| Cycle from epoch 50 (a→b→a, full backward)          | 5.72      |
+| Cycle from epoch 100 (a→b→a, full backward)         | 5.58      |
+| Cycle from epoch 50 (only b→a backprop, iii=3)      | **5.09** ✅ |
+| DiffVC with speaker encoder                         | 5.90      |
+| DiffVC with one-hot speaker vector                  | 6.34      |
 
 ---
 
