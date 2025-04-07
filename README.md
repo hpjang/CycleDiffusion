@@ -26,7 +26,7 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 
 ---
 
-## 📁 Directory Structure and Usage
+## 📁 Directory Structure 
 - `VCTK_2F2M/`: Subset of the VCTK dataset with 2 female and 2 male speakers.
   - Contains subfolders like `wavs/`, `mels/`, `embeds/`, `textgrids/`, and `txt/`.
 - `converted_all/`: All voice conversion output files.
@@ -42,6 +42,18 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
   - `cal_pymcd.py`: Computes MCD using DTW.
   - `make_json.py`: Generates a default JSON template for storing evaluation results.
 - `tree_files.py`: Utility for generating markdown descriptions of directory structures.
+
+## 🔍 Usage
+1. Clone this repository:
+```bash
+ git clone https://github.com/hpjang/CycleDiffusion.git
+```
+2. Download VCTK dataset:
+3. Preprocessed VCTK dataset
+5. Train the model:
+```bash
+ python3 real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50_*.py
+```
 
 ## ⚙️ Training & Evaluation Setup
 - **Dataset**: VCTK (p236, p239, p259, p263) — 471 training utterances and 10 test utterances per speaker.
