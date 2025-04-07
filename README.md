@@ -48,8 +48,12 @@ Voice conversion modifies a source speaker's voice to sound like that of a targe
 ```bash
  git clone https://github.com/hpjang/CycleDiffusion.git
 ```
-2. Download VCTK dataset:
-3. Preprocessed VCTK dataset
+2. Install packages:
+```bash
+ pip install -r requirements.txt
+```
+3. Download VCTK dataset:
+4. Preprocessed VCTK dataset
 5. Train the model:
 ```bash
  python3 real_last_cycle_train_dec_4speakers_iii3_cycle6_from_50_*.py
