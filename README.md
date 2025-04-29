@@ -69,6 +69,9 @@ Download to `real_last_cycle_train_dec_4speakers_original/`
 Download to `checkpts/`
 - [Google Drive – checkpts](https://drive.google.com/drive/folders/1uMD526Dua2NpyRZLvoLtawgYDZDxII-3?usp=sharing)
 
+Download to `VCTK_2F2M/` 
+- [Google Drive – data](https://drive.google.com/drive/folders/16LjHRC52EulLlOoeFIniIkRTUvS3ZDv0?usp=sharing)
+
 Please place the downloaded checkpoint files under the appropriate `checkpts/` directory to run inference or resume training.
 
 
